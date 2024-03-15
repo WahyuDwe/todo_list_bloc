@@ -38,10 +38,11 @@ class _TodoListState extends State<TodoList> {
                 );
               },
             );
+          } else {
+            return const Center(
+              child: Text('There is no todos here'),
+            );
           }
-          return const Center(
-            child: Text('No todos yet!'),
-          );
         },
       ),
       floatingActionButton: FloatingActionButton(

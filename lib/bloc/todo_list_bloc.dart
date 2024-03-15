@@ -25,8 +25,19 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
       if (state is TodoListLoaded) {
         final List<Todo> updatedTodos =
             List.from((state as TodoListLoaded).todos)..remove(event.todo);
-        emit(TodoListLoaded(updatedTodos));
+
+        if (updatedTodos.isNotEmpty) {
+          emit(TodoListLoaded(updatedTodos));
+        } else {
+          emit(TodoListInitial());
+        }
       }
     });
+  }
+
+  @override
+  void onChange(Change<TodoListState> change) {
+    super.onChange(change);
+    print('on change -> $change');
   }
 }
