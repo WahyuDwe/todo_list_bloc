@@ -20,5 +20,13 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
         emit(TodoListLoaded([todo]));
       }
     });
+
+    on<RemoveTodo>((event, emit) {
+      if (state is TodoListLoaded) {
+        final List<Todo> updatedTodos =
+            List.from((state as TodoListLoaded).todos)..remove(event.todo);
+        emit(TodoListLoaded(updatedTodos));
+      }
+    });
   }
 }

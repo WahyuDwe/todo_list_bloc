@@ -7,3 +7,9 @@ class AddTodo extends TodoListEvent {
 
   AddTodo(this.title);
 }
+
+class RemoveTodo extends TodoListEvent {
+  final Todo todo;
+
+  RemoveTodo(this.todo);
+}
